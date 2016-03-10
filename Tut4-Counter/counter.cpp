@@ -1,3 +1,7 @@
+//PRANEEL MISTHRY 202515355 
+//COMPUTER METHODS 3 Tut4-SpecialCounter
+//11 MARCH 2016
+/****************************************************************************************************************/
 #include <iostream>
 #include "counter.h"
 #include <string>
