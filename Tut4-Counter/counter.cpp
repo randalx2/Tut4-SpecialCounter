@@ -25,13 +25,13 @@ SpecialCounter::~SpecialCounter()
 	//Default empty destructor
 }
 
-int SpecialCounter::start(int starter) //Method to start counting
+int SpecialCounter::start(int starter) //Method to set start count
 {
 	startcount = starter;
 	return startcount;
 }
 
-int SpecialCounter::stop(int stopper)
+int SpecialCounter::stop(int stopper) //Method to set stop count
 {
 	stopcount = stopper;
 	return stopcount;
@@ -52,7 +52,7 @@ int SpecialCounter::stepDec(int stepSize)
 SpecialCounter SpecialCounter::operator++() //prefix method for counting up--value is incremented THEN used
 {
 	startcount += 1;
-	return *this;
+	return *this;    //simply returns the pointer to the updated current object
 }
 
 SpecialCounter SpecialCounter::operator--() //prefix method for counting down--value is decremented THEN used
@@ -63,9 +63,9 @@ SpecialCounter SpecialCounter::operator--() //prefix method for counting down--v
 
 SpecialCounter SpecialCounter::operator++(int) //Postfix method for counting up: value is used THEN incremented
 {
-	SpecialCounter duplicate(*this); //create a duplicated copy of the variable using the *this pointer
+	SpecialCounter duplicate(*this); //create a duplicated copy of the current object using the *this pointer
 	startcount += 1;
-	return duplicate;
+	return duplicate;              //we need to return the duplicate since the old value is used THEN updated
 } 
 
 SpecialCounter SpecialCounter::operator--(int)
@@ -77,12 +77,18 @@ SpecialCounter SpecialCounter::operator--(int)
 
 int SpecialCounter::showUPCount()  //Show updated values when upcounting
 {
-	return startcount;
+	return startcount;            //Allows user to access private attribute
 }
 
 int SpecialCounter::showDownCount() //Show updated values when down counting
 {
-	return stopcount;
+	return stopcount;        //Allows user to view private attribute
+}
+
+void SpecialCounter::resetTimer()
+{
+	startcount = 0;
+	stopcount = 255;
 }
 
 //Added in this method to show the current value of the counter depending on increment / decrement

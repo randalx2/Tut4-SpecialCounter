@@ -26,28 +26,37 @@ int main()
 	//Counting up
 	cout << "Default Counter Counting UP..." << endl;
 
-	for (int i = Timer0.showUPCount(); i <= Timer0.showDownCount(); i++)
+	for (int i = Timer0.showUPCount(); i < Timer0.showDownCount(); i++)
 	{
-		cout << i << endl;
+		Timer0++;
+		cout << Timer0.showUPCount() << endl;
 	}
+
+	Timer0.resetTimer();  //Reset the timer back to default values
 
 	//Counting Down
 	cout << "Default Counter Counting DOWN..." << endl;
 
-	for (int i = Timer0.showDownCount(); i >= Timer0.showUPCount(); i--)
+	for (int i = Timer0.showDownCount(); i > Timer0.showUPCount(); i--)
 	{
-		cout << i << endl;
+		Timer0--;
+		cout << Timer0.showDownCount() << endl;
 	}
+
+	Timer0.resetTimer();
 
 	//Demonstrating use of user input counter values for stop and start
 	cout << endl;
 	cout << "Please enter the start and stop values for your UP counter " << endl;
 	cin >> usrstart >> usrend; //update the variables
 
-	for (int i = Timer0.start(usrstart); i <= Timer0.stop(usrend); i++)
+	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
-		cout << i << endl;
+		Timer0++;
+		cout << Timer0.showUPCount() << endl;
 	}
+
+	Timer0.resetTimer();
 
 	//Demonstrating use of user input for Down Counter
 	cout << "Please enter the start and stop values for your DOWN counter " << endl;
@@ -55,8 +64,11 @@ int main()
 
 	for (int i = Timer0.stop(usrstart); i >= Timer0.start(usrend); i--)
 	{
-		cout << i << endl;
+		Timer0--;
+		cout << Timer0.showDownCount() << endl;
 	}
+
+	Timer0.resetTimer();
 
 	//Demonstrating the operator overloading methods
 
@@ -64,11 +76,13 @@ int main()
 	cout << "Enter the start and stop values for Operator Overloading prefix UP Counter " << endl;
 	cin >> usrstart >> usrend;
 
-	for (int i = Timer0.start(usrstart); i <= Timer0.stop(usrend); i++)
+	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
 		++Timer0;
 		cout << Timer0.showUPCount() << endl; //NB VALUE IS INCREMENTED IMMEDIATELY THEN USED
 	}
+
+	Timer0.resetTimer();
 
 	//Demonstrating the operator overloading methods
 
@@ -76,23 +90,33 @@ int main()
 	cout << "Enter the start and stop values for Operator Overloading prefix DOWN Counter " << endl;
 	cin >> usrstart >> usrend;
 
-	for(int i = Timer0.stop(usrstart); i >= Timer0.start(usrend); i--)
+	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
 		--Timer0;
 		cout << Timer0.showDownCount() << endl; //NB VALUE IS DECREMENTED IMMEDIATELY THEN USED
 	}
 
-	//NB Need to insert some error protection for counting over specified limits
+	Timer0.resetTimer();
+
+     //NB Need to insert some error protection for counting over specified limits
+	//Also insert some error checking
 
 	//Demonstrating the use of user input increments
-	/*cout << "Please Enter the start and stop values for your CUSTOM UP COUNTER " << endl;
+
+	cout << "Enter start and stop values for Custome UP Counter" << endl;
 	cin >> usrstart >> usrend;
+	cout << "Enter the increment value for your custom up counter " << endl;
+	cin >> usrStepUP;
 
-	cout << "Please Enter the CUSTOM INCREMENT VALUE for your CUSTOM UP COUNTER " << endl;
-	cin >> usrStepUP;*/
+	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
+	{
+		cout << Timer0.stepInc(usrStepUP) << endl; 
+		if (Timer0.stepInc(usrStepUP) >= Timer0.stop(usrend))
+			break;   //Stop counting if incremented value exceeds or is equal to the stop value of the timer
+	}
+	
+	Timer0.resetTimer();
 
-	
-	
 	system("PAUSE");
 	return 0;
 }

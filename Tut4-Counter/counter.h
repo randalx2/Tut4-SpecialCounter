@@ -29,6 +29,8 @@ public: SpecialCounter();  //Default Constructor
 
 		int showUPCount();  //Method used to access private updated startcount attribute
 		int showDownCount(); //Method used to access private updated stopcount attribute
+
+		void resetTimer(); //method used to reset timer values during main code for demo purpose
 };
 
 #endif
