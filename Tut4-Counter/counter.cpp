@@ -11,9 +11,14 @@ SpecialCounter::SpecialCounter() //Default Constructor
 }
 
 SpecialCounter::SpecialCounter(int instart, int instop) //Overloading constructor with specified inputs
-{
+{                                                      //May not be needed depending on methods used
 	startcount = instart;
 	stopcount = instop;	
+}
+
+SpecialCounter::~SpecialCounter()
+{
+	//Default empty destructor
 }
 
 int SpecialCounter::start(int starter) //Method to start counting
@@ -28,14 +33,16 @@ int SpecialCounter::stop(int stopper)
 	return stopcount;
 }
 
-int SpecialCounter::stepInc(int stepup)
+int SpecialCounter::stepInc(int stepSize)
 {
-	startcount = startcount + stepup;
+	startcount = startcount + stepSize;
+	return startcount;
 }
 
-int SpecialCounter::stepDec(int stepdown)
+int SpecialCounter::stepDec(int stepSize)
 {
-	stopcount = stopcount - stepdown;
+	stopcount = stopcount - stepSize;
+	return stopcount;
 }
 
 SpecialCounter SpecialCounter::operator++() //prefix method for counting up--value is incremented THEN used
@@ -50,7 +57,7 @@ SpecialCounter SpecialCounter::operator--() //prefix method for counting down--v
 	return *this;
 }
 
-SpecialCounter SpecialCounter::operator++(int)
+SpecialCounter SpecialCounter::operator++(int) //Postfix method for counting up: value is used THEN incremented
 {
 	SpecialCounter duplicate(*this); //create a duplicated copy of the variable using the *this pointer
 	startcount += 1;
@@ -63,3 +70,5 @@ SpecialCounter SpecialCounter::operator--(int)
 	stopcount -= 1;
 	return duplicate;
 }
+
+//Added in this method to show the current value of the counter depending on increment / decrement

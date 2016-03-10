@@ -18,10 +18,10 @@ public: SpecialCounter();  //Default Constructor
 		int stepInc(int);  //method for incrementing the counter by a specified step
 		int stepDec(int);  //method for decrementing the counter by a specified step
 
-		SpecialCounter operator++();      //Overloading prefix ++ ie ++x ==> value is incremented THEN used
-		SpecialCounter operator--();      //Overloading prefix -- ie --x ==> value is decremented THEN used
-		SpecialCounter operator++(int);  //Overloading postfix ++ ie x++ ==> value is used THEN incremented
-		SpecialCounter operator--(int);  //Overloading the postfix -- ie x-- ==> value is used THEN decremented
+		SpecialCounter operator++();      //Overloading prefix ++ ie ++x ==> value is incremented by 1 THEN used
+		SpecialCounter operator--();      //Overloading prefix -- ie --x ==> value is decremented by 1 THEN used
+		SpecialCounter operator++(int);  //Overloading postfix ++ ie x++ ==> value is used THEN incremented by 1
+		SpecialCounter operator--(int);  //Overloading the postfix -- ie x-- ==> value is used THEN decremented by 1
 };
 
 #endif
