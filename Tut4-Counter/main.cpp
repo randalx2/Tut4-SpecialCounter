@@ -1,3 +1,7 @@
+//PRANEEL MISTHRY 202515355 
+//COMPUTER METHODS 3 Tut4-SpecialCounter
+//11 MARCH 2016
+/****************************************************************************************************************/
 #include <iostream>
 #include <string>
 #include <cstdio>
@@ -54,12 +58,38 @@ int main()
 		cout << i << endl;
 	}
 
+	//Demonstrating the operator overloading methods
+
+	cout << "Demonstrating prefixed operator overloading for UP Counting" << endl;
+	cout << "Enter the start and stop values for Operator Overloading prefix UP Counter " << endl;
+	cin >> usrstart >> usrend;
+
+	for (int i = Timer0.start(usrstart); i <= Timer0.stop(usrend); i++)
+	{
+		++Timer0;
+		cout << Timer0.showUPCount() << endl; //NB VALUE IS INCREMENTED IMMEDIATELY THEN USED
+	}
+
+	//Demonstrating the operator overloading methods
+
+	cout << "Demonstrating prefixed operator overloading for DOWN Counting" << endl;
+	cout << "Enter the start and stop values for Operator Overloading prefix DOWN Counter " << endl;
+	cin >> usrstart >> usrend;
+
+	for(int i = Timer0.stop(usrstart); i >= Timer0.start(usrend); i--)
+	{
+		--Timer0;
+		cout << Timer0.showDownCount() << endl; //NB VALUE IS DECREMENTED IMMEDIATELY THEN USED
+	}
+
+	//NB Need to insert some error protection for counting over specified limits
+
 	//Demonstrating the use of user input increments
-	cout << "Please Enter the start and stop values for your CUSTOM UP COUNTER " << endl;
+	/*cout << "Please Enter the start and stop values for your CUSTOM UP COUNTER " << endl;
 	cin >> usrstart >> usrend;
 
 	cout << "Please Enter the CUSTOM INCREMENT VALUE for your CUSTOM UP COUNTER " << endl;
-	cin >> usrStepUP;
+	cin >> usrStepUP;*/
 
 	
 	
