@@ -8,36 +8,34 @@ SpecialCounter::SpecialCounter() //Default Constructor
 {
 	startcount = 0;
 	stopcount = 255;
-	inc = 1;
-	dec = 1;
 }
 
-SpecialCounter::SpecialCounter(int instart, int instop, int userinc, int userdec) //Overloading constructor with specified inputs
+SpecialCounter::SpecialCounter(int instart, int instop) //Overloading constructor with specified inputs
 {
 	startcount = instart;
-	stopcount = instop;
-	inc = userinc;
-	dec = userdec;
+	stopcount = instop;	
 }
 
-void SpecialCounter::start(int starter) //Method to start counting
+int SpecialCounter::start(int starter) //Method to start counting
 {
-	
+	startcount = starter;
+	return startcount;
 }
 
-void SpecialCounter::stop(int stopper)
+int SpecialCounter::stop(int stopper)
 {
-
+	stopcount = stopper;
+	return stopcount;
 }
 
 int SpecialCounter::stepInc(int stepup)
 {
-
+	startcount = startcount + stepup;
 }
 
 int SpecialCounter::stepDec(int stepdown)
 {
-
+	stopcount = stopcount - stepdown;
 }
 
 SpecialCounter SpecialCounter::operator++() //prefix method for counting up--value is incremented THEN used

@@ -6,14 +6,14 @@
 using namespace std;
 
 class SpecialCounter{
-private: int startcount, stopcount, inc, dec;
+private: int startcount, stopcount; // , inc, dec;
 
 public: SpecialCounter();  //Default Constructor
 		~SpecialCounter();//Default Destructor
-		SpecialCounter(int, int, int, int);  //Overloading Constructor to set attributes to user specs
+		SpecialCounter(int, int);  //Overloading Constructor to set attributes to user specs
 
-		void start(int);  //start counter method at specified value
-		void stop(int);   //stop counter method at specified value
+		int start(int);  //start counter method at specified value
+		int stop(int);   //stop counter method at specified value
 
 		int stepInc(int);  //method for incrementing the counter by a specified step
 		int stepDec(int);  //method for decrementing the counter by a specified step
