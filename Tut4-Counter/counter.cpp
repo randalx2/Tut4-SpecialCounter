@@ -71,4 +71,14 @@ SpecialCounter SpecialCounter::operator--(int)
 	return duplicate;
 }
 
+int SpecialCounter::showUPCount()  //Show updated values when upcounting
+{
+	return startcount;
+}
+
+int SpecialCounter::showDownCount() //Show updated values when down counting
+{
+	return stopcount;
+}
+
 //Added in this method to show the current value of the counter depending on increment / decrement

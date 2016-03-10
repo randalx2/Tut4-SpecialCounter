@@ -22,6 +22,9 @@ public: SpecialCounter();  //Default Constructor
 		SpecialCounter operator--();      //Overloading prefix -- ie --x ==> value is decremented by 1 THEN used
 		SpecialCounter operator++(int);  //Overloading postfix ++ ie x++ ==> value is used THEN incremented by 1
 		SpecialCounter operator--(int);  //Overloading the postfix -- ie x-- ==> value is used THEN decremented by 1
+
+		int showUPCount();  //Method used to access private updated startcount attribute
+		int showDownCount(); //Method used to access private updated stopcount attribute
 };
 
 #endif
