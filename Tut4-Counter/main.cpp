@@ -54,6 +54,7 @@ int main()
 	cin >> usrstart >> usrend; //update the variables
 
 	checkinputUP(usrstart, usrend);
+	cout << endl;
 
 	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
@@ -68,6 +69,7 @@ int main()
 	cin >> usrstart >> usrend; //update the variables
 
 	checkinputDOWN(usrstart, usrend);
+	cout << endl;
 
 	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
@@ -84,6 +86,7 @@ int main()
 	cin >> usrstart >> usrend;
 
 	checkinputUP(usrstart, usrend);
+	cout << endl;
 
 	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
@@ -100,6 +103,7 @@ int main()
 	cin >> usrstart >> usrend;
 
 	checkinputDOWN(usrstart, usrend);
+	cout << endl;
 
 	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
@@ -121,6 +125,7 @@ int main()
 
 	cout << "Enter the increment value for your custom up counter " << endl;
 	cin >> usrStepUP;
+	cout << endl;
 
 	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
@@ -139,6 +144,7 @@ int main()
 
 	cout << "Enter the decrement value for your custom DOWN counter " << endl;
 	cin >> usrStepDOWN;
+	cout << endl;
 
 	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
@@ -146,6 +152,10 @@ int main()
 		if (Timer0.stepDec(usrStepDOWN) <= Timer0.start(usrend))
 			break;   //Stop counting if incremented value exceeds or is equal to the stop value of the timer
 	}
+
+	/*NB There seems to be a bug that causes the increment value to double after the first count when using
+	 a custom counter with user specified increments and decrements. I have tried to fix the bug but can't seem
+	 to pin point the possible logical error at this stage. Assistance would be appreciated--PM*******************/
 
 	Timer0.resetTimer();
 
