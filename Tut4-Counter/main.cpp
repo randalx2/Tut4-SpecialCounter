@@ -12,11 +12,14 @@
 
 using namespace std;
 
+void checkinputUP(int start, int end); //Global functions to check for valid user inputs
+void checkinputDOWN(int start, int end);
+
+int usrstart = 0; //Global variables for user input
+int usrend = 255;
+
 int main()
 {
-	int usrstart = 0;
-	int usrend = 255;
-
 	int usrStepUP = 0;  //user specified increment
 	int usrStepDOWN = 0; //user specified decrement
 
@@ -50,6 +53,8 @@ int main()
 	cout << "Please enter the start and stop values for your UP counter " << endl;
 	cin >> usrstart >> usrend; //update the variables
 
+	checkinputUP(usrstart, usrend);
+
 	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
 		Timer0++;
@@ -62,7 +67,9 @@ int main()
 	cout << "Please enter the start and stop values for your DOWN counter " << endl;
 	cin >> usrstart >> usrend; //update the variables
 
-	for (int i = Timer0.stop(usrstart); i >= Timer0.start(usrend); i--)
+	checkinputDOWN(usrstart, usrend);
+
+	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
 		Timer0--;
 		cout << Timer0.showDownCount() << endl;
@@ -75,6 +82,8 @@ int main()
 	cout << "Demonstrating prefixed operator overloading for UP Counting" << endl;
 	cout << "Enter the start and stop values for Operator Overloading prefix UP Counter " << endl;
 	cin >> usrstart >> usrend;
+
+	checkinputUP(usrstart, usrend);
 
 	for (int i = Timer0.start(usrstart); i < Timer0.stop(usrend); i++)
 	{
@@ -89,6 +98,8 @@ int main()
 	cout << "Demonstrating prefixed operator overloading for DOWN Counting" << endl;
 	cout << "Enter the start and stop values for Operator Overloading prefix DOWN Counter " << endl;
 	cin >> usrstart >> usrend;
+
+	checkinputDOWN(usrstart, usrend);
 
 	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
 	{
@@ -105,6 +116,9 @@ int main()
 
 	cout << "Enter start and stop values for Custome UP Counter" << endl;
 	cin >> usrstart >> usrend;
+
+	checkinputUP(usrstart, usrend);
+
 	cout << "Enter the increment value for your custom up counter " << endl;
 	cin >> usrStepUP;
 
@@ -117,6 +131,42 @@ int main()
 	
 	Timer0.resetTimer();
 
+	//Demonstrating the use of user input decrements
+	cout << "Enter start and stop values for Custome DOWN Counter" << endl;
+	cin >> usrstart >> usrend;
+
+	checkinputDOWN(usrstart, usrend);
+
+	cout << "Enter the decrement value for your custom DOWN counter " << endl;
+	cin >> usrStepDOWN;
+
+	for (int i = Timer0.stop(usrstart); i > Timer0.start(usrend); i--)
+	{
+		cout << Timer0.stepDec(usrStepDOWN) << endl;
+		if (Timer0.stepDec(usrStepDOWN) <= Timer0.start(usrend))
+			break;   //Stop counting if incremented value exceeds or is equal to the stop value of the timer
+	}
+
+	Timer0.resetTimer();
+
 	system("PAUSE");
 	return 0;
+}
+
+void checkinputUP(int start, int end)
+{
+	if (start > end)  //Check for valid input
+	{
+		cout << "This is an UP COUNTER. Please enter valid start and stop values ie start value < stop value " << endl;
+		cin >> usrstart >> usrend;
+	}
+}
+
+void checkinputDOWN(int start, int end)
+{
+	if (start < end)  //Check for valid input
+	{
+		cout << "This is a DOWN COUNTER. Please enter valid start and stop values ie start value > stop value " << endl;
+		cin >> usrstart >> usrend;
+	}
 }

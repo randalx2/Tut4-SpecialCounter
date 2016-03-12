@@ -51,27 +51,27 @@ int SpecialCounter::stepDec(int stepSize)
 
 SpecialCounter SpecialCounter::operator++() //prefix method for counting up--value is incremented THEN used
 {
-	startcount += 1;
+	++startcount;
 	return *this;    //simply returns the pointer to the updated current object
 }
 
 SpecialCounter SpecialCounter::operator--() //prefix method for counting down--value is decremented THEN used
 {
-	stopcount -= 1;
+	--stopcount;
 	return *this;
 }
 
 SpecialCounter SpecialCounter::operator++(int) //Postfix method for counting up: value is used THEN incremented
 {
 	SpecialCounter duplicate(*this); //create a duplicated copy of the current object using the *this pointer
-	startcount += 1;
+	startcount++;
 	return duplicate;              //we need to return the duplicate since the old value is used THEN updated
 } 
 
 SpecialCounter SpecialCounter::operator--(int)
 {
 	SpecialCounter duplicate(*this);
-	stopcount -= 1;
+	stopcount--;
 	return duplicate;
 }
 
